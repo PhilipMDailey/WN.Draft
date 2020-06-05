@@ -1,0 +1,1 @@
+web: gunicorn WN_Site.wsgi
