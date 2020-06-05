@@ -1,0 +1,18 @@
+{% extends 'WN_Content/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for post in posts %}
+    <div>
+        <a href="{% url 'selected_podcast' post.id %}" class="btn btn-link">{{ post.Title }}</a>
+        <p>{{ post.Published_Date }} </p>
+        <p>{{ post.Description }}</p>
+    </div>
+{% endfor %}
+
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'content/home.css' %}" rel="stylesheet"> 
+{% endblock %}

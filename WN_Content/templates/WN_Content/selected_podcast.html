@@ -1,0 +1,32 @@
+{% extends 'WN_Content/base.html' %}
+{% block content %}
+
+
+<div>
+    <h2>{{ post.Video_Url }}</h2>
+    <h2>{{ post.Title }}</h2>
+    <p>{{ post.Published_Date }} </p>
+    <p>{{ post.Description }}</p>
+</div>
+
+{% if resource.related == post %}
+    {% for resource in related1 %}
+        <div>
+            <a href="{% url 'selected_type1' resource.id %}" class="btn btn-link">{{ resource.title }}</a>
+        </div>
+    {% endfor %} 
+    {% for resource in related2 %}
+        <div>
+            <a href="{% url 'selected_type2' resource.id %}" class="btn btn-link">{{ resource.title }}</a>
+        </div>
+    {% endfor %} 
+{% endif %} 
+
+{% for post in posts %}
+<div>
+    <a href="{% url 'selected_podcast' post.id %}" class="btn btn-link">{{ post.Title }}</a>
+    <p>{{ post.Published_Date }}</p>
+    <p>{{ post.Description }}</p>
+</div>
+{% endfor %} 
+{% endblock %}

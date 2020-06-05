@@ -1,0 +1,8 @@
+nav *{
+    color: rgb(80, 75, 151) !important;
+}
+
+nav *:hover {
+    color: rgb(6, 11, 51) !important;
+}
+
