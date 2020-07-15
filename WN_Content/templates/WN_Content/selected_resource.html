@@ -1,0 +1,68 @@
+{% extends 'WN_Content/base.html' %}
+{% block content %}
+
+<div id="selected-resource">
+    <h2>{{ resource.title }}</h2>
+    <p>{{ resource.description }}</p>
+</div>
+
+<div id="related-resources">
+    <h4>Related Resources:</h4>
+</div>
+
+{% for alt_resource in type_check %}
+    <div class="container" id="resource-list">
+            <div class="row">
+                <div class="col-md-auto">
+                    <div class="card border-0 shadow">
+                        <a href="{% url 'selected_resource' alt_resource.id alt_resource.resource_type %}" class="btn btn-link"><h2>{{ alt_resource.title }}</h2></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div>
+</div>
+{% endfor %}
+
+<div id="community-feedback">
+    <h2>Community Feedback</h2>
+</div>
+
+{% comment %} <form action='' method='POST'> {% csrf_token %}
+    {{ feedback_form }}
+    <input type='Submit' value='Save'/>
+</form> {% endcomment %}
+
+<div class="form-group" id="form">
+    <form method="POST">
+        {% csrf_token %}
+        {{ feedback_form.as_p }}
+        <button class="btn btn-secondary">Submit</button>
+</div>
+
+{% for list in listed_feedback %}
+<div id="listed-feedback">
+    <h4>{{ list.name }}</h4> 
+    <p>{{ list.feedback }}</p>
+</div>
+{% endfor %}
+{% comment %} {% for alt_resource in resources1 %}
+<div>
+    <a href="{% url 'selected_resource' alt_resource.id %}" class="btn btn-link">{{ alt_resource.title }}</a>
+    <p>{{ resource.description }}</p>
+</div>
+{% endfor %}
+
+{% for resource_object in resources2 %}
+<div>
+    <a href="{% url 'selected_resource' resource_object.id %}" class="btn btn-link">{{ resource.title }}</a>
+    <p>{{ resource.description }}</p>
+</div>
+{% endfor %}  {% endcomment %}
+<div class="container">
+    <div class="row" id="spacer">
+        <div class="col">
+        </div>
+    </div>
+</div>
+{% endblock %}

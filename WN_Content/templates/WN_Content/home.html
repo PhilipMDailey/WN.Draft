@@ -1,0 +1,79 @@
+{% extends 'WN_Content/base.html' %}
+{% load static %}
+
+
+<body>
+{% block content %}
+
+<header>
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="" type="video/mp4">
+  </video>
+  <div class="container h-100">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100 text-white">
+        <h1 class="display-3">One Header To Rule Them All</h1>
+        <p class="lead mb-0">One Subheader To Find Them, One Button To Bring Them All, And In The Darkness...</p>
+        <button type="button" class="btn btn-light" id="header-button">Bind Them</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="my-5" id="home-intro">
+  <div class="container" id="home-intro-child">
+    <div class="row">
+      <div class="col-3" id="headshot">
+      <img src="{% static 'content/headshot.png' %}" class="img-fluid" alt="" width="250" height="250" id="headshot">
+      </div>
+      <div class="col-9" id="home-content">
+        <h2>Engaging Title</h2>
+        <p>This is some engaging language that will usher the viewer into the webpage.</p>
+        <p>Lorem ipsum dolor sit amet, cu ius quod habeo partem, cum te mazim sonet essent. Nam no graeco facilisis hendrerit, errem perpetua est an, nec tantas erroribus et. In sit vide virtute meliore, delenit dolores et cum. Id quo malorum eleifend indoctum.</p>
+        <p>Te putent laboramus vis, legere fabulas percipitur ius ut. Eam integre suscipiantur comprehensam eu, ut ubique discere dissentiet vim, no cum corpora propriae. Cu vim augue vitae mollis. Illum intellegat sea ut, brute qualisque at eos.</p>
+        <h6 id="co-founder">-First & Last Name: Co-Founder-</h6>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="container" id="podcast-container">
+  <div class="row">
+    <div class="col">
+        <div>
+        <h2 id="podcast-title"> Latest Media </h2>
+        </div>
+        <div class="card border-0 shadow">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="{{ latest_podcast.Podcast }}" allowfullscreen></iframe>
+            </div>
+            <div id="podcast-text-title">
+                <h3>{{ latest_podcast.Title }}</h3>
+            </div>
+            <div id="podcast-text-date">
+                <h6>{{ latest_podcast.Published_Date }} </h6>
+            </div>
+            <div id="line">
+            </div>
+            <div id="podcast-text-description">    
+                <p>{{ latest_podcast.Description }}</p>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row" id="spacer">
+        <div class="col">
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+
+{% block extra_css %}
+<link href="{% static 'content/home.css' %}" rel="stylesheet"> 
+{% endblock %}

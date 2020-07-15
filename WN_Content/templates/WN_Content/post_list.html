@@ -1,17 +1,25 @@
 {% extends 'WN_Content/base.html' %}
 {% load static %}
 
+<body>
 {% block content %}
-
 {% for post in posts %}
-    <div>
-        <a href="{% url 'selected_podcast' post.id %}" class="btn btn-link">{{ post.Title }}</a>
-        <p>{{ post.Published_Date }} </p>
-        <p>{{ post.Description }}</p>
-    </div>
-{% endfor %}
 
+<div class="container" id="podcast-list-container">
+    <div class="row" id="podcast-list">
+        <div class="col-md-auto">
+            <div class="card border-0 shadow">
+                <div>
+                    <a href="{% url 'selected_podcast' post.id %}" class="btn btn-link"><h2>{{ post.Title }}</h2></a>
+                    <h6 id="podcast-list-date">{{ post.Published_Date }} </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}
+</body>
 
 {% block extra_css %}
 <link href="{% static 'content/home.css' %}" rel="stylesheet"> 

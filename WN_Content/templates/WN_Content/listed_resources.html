@@ -1,0 +1,64 @@
+{% extends 'WN_Content/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% if request.path == '/WN_Content/listed_resources/1' %}
+    {% for post in type1 %}
+    <div class="container" id="resource-list">
+        <div class="row">
+            <div class="col-md-auto">
+                <div class="card border-0 shadow">
+                    <a href="{% url 'selected_resource' post.id post.resource_type %}" class="btn btn-link"><h2>{{ post.title }}</h2></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %} 
+{% endif %} 
+
+{% if request.path == '/WN_Content/listed_resources/2' %}
+    {% for post in type2 %}
+    <div class="container" id="resource-list">
+        <div class="row">
+            <div class="col-md-auto">
+                <div class="card border-0 shadow">
+                    <a href="{% url 'selected_resource' post.id post.resource_type %}" class="btn btn-link"><h2>{{ post.title }}</h2></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %} 
+{% endif %}
+
+{% if request.path == '/WN_Content/listed_resources/3' %}
+    {% for post in type3 %}
+    <div class="container" id="resource-list">
+        <div class="row">
+            <div class="col-md-auto">
+                <div class="card border-0 shadow">
+                    <a href="{% url 'selected_resource' post.id post.resource_type %}" class="btn btn-link"><h2>{{ post.title }}</h2></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %} 
+{% endif %} 
+
+
+{% comment %} {% for resource in post1 %}
+    <div>
+        <a href="{% url 'selected_type1' resource.id %}" class="btn btn-link">{{ resource.title }}</a>
+        <p>{{ resource.description }}</p>
+    </div>
+{% endfor %}
+
+{% for resource in post2 %}
+    <div>
+        <a href="{% url 'selected_type2' resource.id %}" class="btn btn-link">{{ resource.title }}</a>
+        <p>{{ resource.description }}</p>
+    </div>
+{% endfor %} {% endcomment %}
+
+{% endblock %}
+

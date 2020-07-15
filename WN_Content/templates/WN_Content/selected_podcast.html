@@ -1,32 +1,69 @@
 {% extends 'WN_Content/base.html' %}
 {% block content %}
 
+<div class="container">
+    <div class="row">
+        <div class="col" id="podcast-container"> 
+            <div class="card border-0 shadow">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="{{ post.Podcast }}" allowfullscreen></iframe>
+                </div>
+                <div id="podcast-text-title">
+                    <h2>{{ post.Title }}</h2> 
+                </div>
+                <div id="podcast-text-date">
+                    <h6>{{ post.Published_Date }} </h6>
+                </div>
+                <div id="podcast-resource-header">
+                    <h5>Related Resources:</h5>
+                </div>
+                <div id="podcast-resources">
+                    {% for resource_print in relatedpost1 %}
+                        <a href="{% url 'selected_resource' resource_print.id resource_print.resource_type %}" class="btn btn-link"><h6>{{ resource_print.title }}</h6></a>
+                    {% endfor %}  
 
-<div>
-    <h2>{{ post.Video_Url }}</h2>
-    <h2>{{ post.Title }}</h2>
-    <p>{{ post.Published_Date }} </p>
-    <p>{{ post.Description }}</p>
+                    {% for resource_print in relatedpost2 %}
+                        <a href="{% url 'selected_resource' resource_print.id resource_print.resource_type %}" class="btn btn-link"><h6>{{ resource_print.title }}</h6></a>
+                    {% endfor %} 
+
+                    {% for resource_print in relatedpost3 %}
+                        <a href="{% url 'selected_resource' resource_print.id resource_print.resource_type %}" class="btn btn-link"><h6>{{ resource_print.title }}</h6></a>
+                    {% endfor %} 
+                </div>
+                <div id="line">
+                </div>
+                <div id="podcast-text-description">
+                    <p>{{ post.Description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-{% if resource.related == post %}
-    {% for resource in related1 %}
-        <div>
-            <a href="{% url 'selected_type1' resource.id %}" class="btn btn-link">{{ resource.title }}</a>
-        </div>
-    {% endfor %} 
-    {% for resource in related2 %}
-        <div>
-            <a href="{% url 'selected_type2' resource.id %}" class="btn btn-link">{{ resource.title }}</a>
-        </div>
-    {% endfor %} 
-{% endif %} 
+<div id="podcast-list-header-selected">
+    <h3>Other Podcasts:</h3>
+</div>
 
 {% for post in posts %}
-<div>
-    <a href="{% url 'selected_podcast' post.id %}" class="btn btn-link">{{ post.Title }}</a>
-    <p>{{ post.Published_Date }}</p>
-    <p>{{ post.Description }}</p>
+<div class="container" id="podcast-list-container-selected">
+    <div class="row" id="podcast-list-selected">
+        <div class="col-md-auto">
+            <div class="card border-0 shadow">
+                <div>
+                    <a href="{% url 'selected_podcast' post.id %}" class="btn btn-link"><h2>{{ post.Title }}</h2></a>
+                    <h6 id="podcast-list-date-selected">{{ post.Published_Date }}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endfor %} 
+
+<div class="container">
+    <div class="row" id="spacer">
+        <div class="col">
+        </div>
+    </div>
+</div>
+
 {% endblock %}
